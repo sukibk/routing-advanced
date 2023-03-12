@@ -4,6 +4,10 @@ import {HomePage} from "./pages/Home";
 import {EventsPage} from "./pages/Events";
 import {EventDetailPage} from "./pages/EventDetail";
 import {NewEventPage} from "./pages/NewEvent";
+import {EditEventPage} from "./pages/EditEvent";
+import {EventNavigationRootPage} from "./pages/EventNavigationRoot";
+import {loader as eventsLoader} from '../src/pages/Events'
+import {ErrorPage} from "./pages/Error";
 // Challenge / Exercise
 
 // 1. Add five new (dummy) page components (content can be simple <h1> elements)
@@ -30,12 +34,17 @@ const router = createBrowserRouter([
   {
     path: '',
     element: <RootPage/>,
+    errorElement: <ErrorPage />,
     children: [
       {index: true, element: <HomePage />},
-      {path: 'events', element: <EventsPage />},
-      {path: 'events/:eventId', element:  <EventDetailPage />},
-      {path: 'events/new', element: <NewEventPage />},
-      {path: 'events/:eventId/edit'}
+      {path: 'events',
+      element: <EventNavigationRootPage />,
+      children: [
+        {index: true, element: <EventsPage />, loader: eventsLoader},
+        {path: ':eventId', element:  <EventDetailPage />},
+        {path: 'new', element: <NewEventPage />},
+        {path: ':eventId/edit', element: <EditEventPage />}
+      ]}
     ]
   }
 ])
