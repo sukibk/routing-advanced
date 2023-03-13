@@ -1,30 +1,48 @@
-import classes from './MainNavigation.module.css';
-import {NavLink} from "react-router-dom";
-import {HomePage} from "../pages/Home";
-import {EventsPage} from "../pages/Events";
-import {EventDetailPage} from "../pages/EventDetail";
-import {NewEventPage} from "../pages/NewEvent";
+import { NavLink } from 'react-router-dom';
 
-// {index: true, element: <HomePage />},
-// {path: 'events', element: <EventsPage />},
-// {path: 'events/:eventId', element:  <EventDetailPage />},
-// {path: 'events/new', element: <NewEventPage />},
-// {path: 'events/:eventId/edit'}
+import classes from './MainNavigation.module.css';
+import NewsletterSignup from './NewsletterSignup';
 
 function MainNavigation() {
   return (
-    <header className={classes.header}>
-      <nav>
-        <ul className={classes.list}>
-          <li>
-            <NavLink className={({isActive}) => isActive ? classes.active : undefined} to=''>Home</NavLink>
-          </li>
-          <li>
-            <NavLink to='events' className={({isActive}) => isActive ? classes.active : undefined}>Events</NavLink>
-          </li>
-        </ul>
-      </nav>
-    </header>
+      <header className={classes.header}>
+        <nav>
+          <ul className={classes.list}>
+            <li>
+              <NavLink
+                  to="/"
+                  className={({ isActive }) =>
+                      isActive ? classes.active : undefined
+                  }
+                  end
+              >
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                  to="/events"
+                  className={({ isActive }) =>
+                      isActive ? classes.active : undefined
+                  }
+              >
+                Events
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                  to="/newsletter"
+                  className={({ isActive }) =>
+                      isActive ? classes.active : undefined
+                  }
+              >
+                Newsletter
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
+        <NewsletterSignup />
+      </header>
   );
 }
 
