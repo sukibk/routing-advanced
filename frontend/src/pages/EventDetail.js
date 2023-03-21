@@ -32,6 +32,8 @@ export async function loader({request, params}) {
 
 async function loadEvent(id){
     const response = await fetch('http://localhost:8080/events/' + id)
+    console.log(response)
+    console.log(!response.ok)
 
     if(!response.ok){
         throw json({message: 'Could not fetch details for selected event.'},

@@ -7,7 +7,7 @@ export const RootPage = () => {
     return <>
         <MainNavigation />
         <main>
-            {/*{navigation.state === 'loading' && <p>Loading ...</p>}*/}
+            {/*navigation.state === 'loading' && <p>Loading ...</p>*/}
             <Outlet />
         </main>
     </>
