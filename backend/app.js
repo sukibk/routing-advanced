@@ -15,6 +15,7 @@ app.use((req, res, next) => {
 
 app.use('/events', eventRoutes);
 
+// Inner use only
 app.use((error, req, res, next) => {
   const status = error.status || 500;
   const message = error.message || 'Something went wrong.';
